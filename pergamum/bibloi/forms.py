@@ -1,4 +1,5 @@
 from django.forms import ModelForm, TextInput
+from suit.widgets import SuitDateWidget
 from suit_redactor.widgets import RedactorWidget
 
 
@@ -8,7 +9,8 @@ class ArticleForm(ModelForm):
             'name': TextInput(attrs={'class': 'input-xxlarge'}),
             'content': RedactorWidget(editor_options={'lang': 'es',
                                                       'minHeight': 400,
-                                                      'maxHeight': 500})
+                                                      'maxHeight': 500}),
+            'date': SuitDateWidget,
         }
 
 

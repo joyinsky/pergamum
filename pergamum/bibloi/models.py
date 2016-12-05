@@ -37,14 +37,31 @@ class Theme(MPTTModel):
         verbose_name_plural = _('Themes')
 
 
+class Source(models.Model):
+    name = models.CharField(_('name'), max_length=50, unique=True)
+    url = models.URLField(_('url'), blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _('Source')
+        verbose_name_plural = _('Sources')
+
+
 class Article(models.Model):
     name = models.CharField(_('title'), max_length=1024)
     created_at = models.DateTimeField(_('created'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated'), auto_now=True)
+    date = models.DateField(_('date'))
     content = models.TextField(_('content'))
     themes = models.ManyToManyField(Theme, blank=True, verbose_name=_('themes'), related_name='articles')
 
-    tags = TaggableManager()
+    source = models.ForeignKey(Source, blank=True, null=True)
+    url = models.URLField(_('url'), blank=True)
+    source_notes = models.TextField(_('Source Notes'), blank=True)
+
+    tags = TaggableManager(blank=True)
 
     def __str__(self):
         return self.name
