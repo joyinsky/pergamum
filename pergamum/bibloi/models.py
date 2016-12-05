@@ -4,23 +4,6 @@ from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.translation import ugettext_lazy as _
 
 
-class Article(models.Model):
-    name = models.CharField(_('title'), max_length=1024)
-    created_at = models.DateTimeField(_('created'), auto_now_add=True)
-    updated_at = models.DateTimeField(_('updated'), auto_now=True)
-    content = models.TextField(_('content'))
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('bibloi:detail', args=[str(self.id)])
-
-    class Meta:
-        verbose_name = _('Article')
-        verbose_name_plural = _('Articles')
-
-
 class Person(models.Model):
     name = models.CharField(_('name'), max_length=100)
     bio = models.TextField(_('bio'), blank=True)
@@ -51,3 +34,21 @@ class Theme(MPTTModel):
     class Meta:
         verbose_name = _('Theme')
         verbose_name_plural = _('Themes')
+
+
+class Article(models.Model):
+    name = models.CharField(_('title'), max_length=1024)
+    created_at = models.DateTimeField(_('created'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated'), auto_now=True)
+    content = models.TextField(_('content'))
+    themes = models.ManyToManyField(Theme, blank=True, verbose_name=_('themes'), related_name='articles')
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('bibloi:detail', args=[str(self.id)])
+
+    class Meta:
+        verbose_name = _('Article')
+        verbose_name_plural = _('Articles')

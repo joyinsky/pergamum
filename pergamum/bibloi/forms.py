@@ -8,7 +8,7 @@ class ArticleForm(ModelForm):
             'name': TextInput(attrs={'class': 'input-xxlarge'}),
             'content': RedactorWidget(editor_options={'lang': 'es',
                                                       'minHeight': 400,
-                                                      'maxHeight': 800})
+                                                      'maxHeight': 500})
         }
 
 
@@ -18,5 +18,5 @@ class PersonForm(ModelForm):
             'name': TextInput(attrs={'class': 'input-xxlarge'}),
             'bio': RedactorWidget(editor_options={'lang': 'es',
                                                   'minHeight': 400,
-                                                  'maxHeight': 800})
+                                                  'maxHeight': 500})
         }

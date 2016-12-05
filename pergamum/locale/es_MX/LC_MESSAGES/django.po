@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-05 06:01-0600\n"
+"POT-Creation-Date: 2016-12-05 06:11-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,38 +38,43 @@ msgstr "actualizado"
 msgid "content"
 msgstr "contenido"
 
-#: pergamum/bibloi/models.py:20
+#: pergamum/bibloi/models.py:12
+#| msgid "Themes"
+msgid "themes"
+msgstr "Temas"
+
+#: pergamum/bibloi/models.py:21
 msgid "Article"
 msgstr "Artículo"
 
-#: pergamum/bibloi/models.py:21
+#: pergamum/bibloi/models.py:22
 msgid "Articles"
 msgstr "Artículos"
 
-#: pergamum/bibloi/models.py:25 pergamum/bibloi/models.py:37
+#: pergamum/bibloi/models.py:26 pergamum/bibloi/models.py:38
 msgid "name"
 msgstr "nombre"
 
-#: pergamum/bibloi/models.py:26
+#: pergamum/bibloi/models.py:27
 msgid "bio"
 msgstr "biografía"
 
-#: pergamum/bibloi/models.py:32
+#: pergamum/bibloi/models.py:33
 msgid "Person"
 msgstr "Persona"
 
-#: pergamum/bibloi/models.py:33
+#: pergamum/bibloi/models.py:34
 msgid "People"
 msgstr "Personas"
 
-#: pergamum/bibloi/models.py:39
+#: pergamum/bibloi/models.py:40
 msgid "order"
 msgstr "orden"
 
-#: pergamum/bibloi/models.py:52
+#: pergamum/bibloi/models.py:53
 msgid "Theme"
 msgstr "Tema"
 
-#: pergamum/bibloi/models.py:53
+#: pergamum/bibloi/models.py:54
 msgid "Themes"
 msgstr "Temas"
