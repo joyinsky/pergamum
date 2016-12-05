@@ -4,6 +4,8 @@ ipdb
 flake8
 Django
 django-suit
+django-reversion
+django-suit-redactor
 psycopg2
 raven
 WebTest

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-05 03:45-0600\n"
+"POT-Creation-Date: 2016-12-05 04:53-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,3 +22,26 @@ msgstr ""
 msgid "Articles Database"
 msgstr "BD de Artículos"
 
+#: pergamum/bibloi/models.py:7
+msgid "title"
+msgstr "título"
+
+#: pergamum/bibloi/models.py:8
+msgid "created"
+msgstr "creado"
+
+#: pergamum/bibloi/models.py:9
+msgid "updated"
+msgstr "actualizado"
+
+#: pergamum/bibloi/models.py:10
+msgid "content"
+msgstr "contenido"
+
+#: pergamum/bibloi/models.py:19
+msgid "Article"
+msgstr "Artículo"
+
+#: pergamum/bibloi/models.py:20
+msgid "Articles"
+msgstr "Artículos"
