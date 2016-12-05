@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.translation import ugettext_lazy as _
+from taggit.managers import TaggableManager
 
 
 class Person(models.Model):
@@ -42,6 +43,8 @@ class Article(models.Model):
     updated_at = models.DateTimeField(_('updated'), auto_now=True)
     content = models.TextField(_('content'))
     themes = models.ManyToManyField(Theme, blank=True, verbose_name=_('themes'), related_name='articles')
+
+    tags = TaggableManager()
 
     def __str__(self):
         return self.name

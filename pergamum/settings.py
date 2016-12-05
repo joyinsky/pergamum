@@ -55,6 +55,7 @@ class Common(Configuration):
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
         'mptt',
+        "taggit",
         'bootstrap3',
         'reversion',
         'suit_redactor',
@@ -146,6 +147,8 @@ class Common(Configuration):
         join(BASE_DIR, 'fixtures')
     ]
 
+    TAGGIT_CASE_INSENSITIVE = True
+
     SUIT_CONFIG = {
         # header
         'ADMIN_NAME': 'Administrador de contenidos',
@@ -162,6 +165,7 @@ class Common(Configuration):
             'sites': 'icon-leaf',
             'auth': 'icon-lock',
             'bibloi': 'icon-folder-open',
+            'taggit': 'icon-tag',
         },
         'MENU_OPEN_FIRST_CHILD': False, # Default True
         'MENU_EXCLUDE': ('auth.group',),
