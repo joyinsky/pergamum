@@ -6,6 +6,7 @@ Django
 django-suit
 django-reversion
 django-suit-redactor
+django-mptt
 psycopg2
 raven
 WebTest

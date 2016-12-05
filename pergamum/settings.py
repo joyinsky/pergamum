@@ -54,6 +54,7 @@ class Common(Configuration):
         'django.contrib.staticfiles',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
+        'mptt',
         'bootstrap3',
         'reversion',
         'suit_redactor',
@@ -115,7 +116,7 @@ class Common(Configuration):
 
     # Internationalization
     # https://docs.djangoproject.com/en/1.10/topics/i18n/
-    LANGUAGE_CODE = 'es-MX'
+    LANGUAGE_CODE = 'es'
 
     LOCALE_PATHS = (BASE_DIR + '/pergamum/locale',)
 
