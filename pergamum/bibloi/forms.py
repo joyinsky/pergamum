@@ -17,6 +17,6 @@ class PersonForm(ModelForm):
         widgets = {
             'name': TextInput(attrs={'class': 'input-xxlarge'}),
             'bio': RedactorWidget(editor_options={'lang': 'es',
-                                                      'minHeight': 400,
-                                                      'maxHeight': 800})
+                                                  'minHeight': 400,
+                                                  'maxHeight': 800})
         }
