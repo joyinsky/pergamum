@@ -160,7 +160,7 @@ class Common(Configuration):
         # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
 
         # menu
-        # 'SEARCH_URL': '/admin/auth/user/',
+        'SEARCH_URL': '',
         'MENU_ICONS': {
             'sites': 'icon-leaf',
             'auth': 'icon-lock',
@@ -285,15 +285,15 @@ class Prod(Deployed):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': '',
-            'USER': '',
-            'PASSWORD': '',
+            'NAME': 'pergamum',
+            'USER': 'www-data',
+            'PASSWORD': 'Pa$$w0rd',
             'HOST': 'localhost',
         }
     }
 
-    ALLOWED_HOSTS = ['.pergamum.informind.com', ]  # add deployment domain here
+    ALLOWED_HOSTS = ['.demo.informind.com', ]  # add deployment domain here
 
-    RAVEN_CONFIG = {
-        'dsn': ''
-    }
+    #RAVEN_CONFIG = {
+    #    'dsn': ''
+    #}

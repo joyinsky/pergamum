@@ -29,6 +29,7 @@ class ArticleAdmin(VersionAdmin):
                       ('sources', _('Sources')),
                       )
 
+    list_display = ['name', 'date', 'source']
 
 
 @admin.register(Person)

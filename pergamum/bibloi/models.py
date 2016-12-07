@@ -6,8 +6,14 @@ from taggit.managers import TaggableManager
 
 
 class Person(models.Model):
+    GROUPS = (
+        ('POLIT', _('Politician')),
+        ('PERIO', _('Journalist')),
+    )
+
     name = models.CharField(_('name'), max_length=100)
     bio = models.TextField(_('bio'), blank=True)
+    group = models.CharField(max_length=5, choices=GROUPS, null=True)
 
     def __str__(self):
         return self.name
