@@ -251,9 +251,8 @@ class Deployed(RedisCache, Common):
     # django-debug-toolbar will throw an ImproperlyConfigured exception if DEBUG is
     # ever turned on when run with a WSGI server
     DEBUG_TOOLBAR_PATCH_SETTINGS = False
-
     PUBLIC_ROOT = join(BASE_DIR, '../public/')
-    STATIC_ROOT = join(BASE_DIR, 'static')
+    STATIC_ROOT = join(BASE_DIR, 'static_public')
     MEDIA_ROOT = join(BASE_DIR, 'media')
     COMPRESS_OUTPUT_DIR = ''
 
