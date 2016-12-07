@@ -321,4 +321,4 @@ class Prod(Deployed):
 
 class ProdDebug(Prod):
     DEBUG = True
-    ALLOWED_HOSTS = []
+
