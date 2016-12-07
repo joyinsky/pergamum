@@ -292,27 +292,7 @@ class Prod(Deployed):
         }
     }
 
-    ALLOWED_HOSTS = ['.demo.informind.com', ]  # add deployment domain here
-
-    #RAVEN_CONFIG = {
-    #    'dsn': ''
-    #}
-
-
-class Prod(Deployed):
-    DEBUG = False
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'pergamum',
-            'USER': 'www-data',
-            'PASSWORD': 'Pa$$w0rd',
-            'HOST': 'localhost',
-        }
-    }
-
-    ALLOWED_HOSTS = ['demo.informind.com', ]  # add deployment domain here
+    ALLOWED_HOSTS = ['demo.informind.com']  # add deployment domain here
 
     #RAVEN_CONFIG = {
     #    'dsn': ''
