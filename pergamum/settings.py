@@ -253,8 +253,8 @@ class Deployed(RedisCache, Common):
     DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
     PUBLIC_ROOT = join(BASE_DIR, '../public/')
-    STATIC_ROOT = join(PUBLIC_ROOT, 'static')
-    MEDIA_ROOT = join(PUBLIC_ROOT, 'media')
+    STATIC_ROOT = join(BASE_DIR, 'static')
+    MEDIA_ROOT = join(BASE_DIR, 'media')
     COMPRESS_OUTPUT_DIR = ''
 
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
