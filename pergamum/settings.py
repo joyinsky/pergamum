@@ -312,7 +312,7 @@ class Prod(Deployed):
         }
     }
 
-    ALLOWED_HOSTS = ['.demo.informind.com', ]  # add deployment domain here
+    ALLOWED_HOSTS = ['demo.informind.com', ]  # add deployment domain here
 
     #RAVEN_CONFIG = {
     #    'dsn': ''
