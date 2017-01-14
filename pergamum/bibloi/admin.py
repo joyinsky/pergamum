@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from reversion.admin import VersionAdmin
 from suit.admin import SortableModelAdmin
 from mptt.admin import MPTTModelAdmin
+from attachments.admin import AttachmentInlines
 from .forms import ArticleForm, PersonForm
 from .models import Article, Person, Theme, Source
 
@@ -30,6 +31,7 @@ class ArticleAdmin(VersionAdmin):
                       )
 
     list_display = ['name', 'date', 'source']
+    inlines = (AttachmentInlines,)
 
 
 @admin.register(Person)
