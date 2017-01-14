@@ -61,6 +61,7 @@ class Common(Configuration):
         'suit_redactor',
         'django_extensions',
         'clear_cache',
+        'attachments',
         'pergamum.bibloi',
     ]
 
