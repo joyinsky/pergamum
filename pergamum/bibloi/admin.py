@@ -39,7 +39,6 @@ class PersonAdmin(admin.ModelAdmin):
     form = PersonForm
 
 
-
 @admin.register(Theme)
 class ThemeAdmin(MPTTModelAdmin, SortableModelAdmin):
     mptt_level_indent = 20
