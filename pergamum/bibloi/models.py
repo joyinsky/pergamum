@@ -9,6 +9,7 @@ class Person(models.Model):
     GROUPS = (
         ('POLIT', _('Politician')),
         ('PERIO', _('Journalist')),
+        ('ANALI', _('Analyst')),
     )
 
     name = models.CharField(_('name'), max_length=100)
