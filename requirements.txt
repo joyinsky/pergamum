@@ -23,4 +23,6 @@ django-extensions
 django-clear-cache
 uwsgi
 django-configurations
+tablib
+pymongo
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric
