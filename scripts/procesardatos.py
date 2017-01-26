@@ -1,6 +1,7 @@
 import os
 import glob
 import tablib
+import pymongo
 
 TYPES = {'txt', 'png', 'wmv', 'rtf', 'pps', 'jpg', 'wma', 'mdi', 'doc', 'pptx', 'pdf', 'xls', 'htm', 'docx', 'gif'}
 
@@ -19,7 +20,21 @@ data.append_col(archivos, header='path')
 
 data.headers = ['filename', 'ext', 'folder', 'path']
 
-if __name__ == "__main__":
+
+def write_to_csv(data):
     with open("archivos.csv", "w") as db:
         db.write(data.csv)
-    print(set(data['ext']))
+
+
+def save_in_mongo(data):
+    with pymongo.MongoClient('mongodb://localhost:27017/') as db:
+        archivo = db.archivo
+        archivo.drop_collection('articulos')
+        articulos = archivo.articulos
+        articulos.insert_many(data.dict)
+
+
+if __name__ == "__main__":
+    save_in_mongo(data)
+    with pymongo.MongoClient('mongodb://localhost:27017/') as db:
+        print(db.archivo.articulos.count())
