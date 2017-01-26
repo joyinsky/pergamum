@@ -36,7 +36,8 @@ def save_in_mongo(data):
         archivo = db.archivo
         archivo.drop_collection('articulos')
         articulos = archivo.articulos
-        articulos.insert_many(data.dict)
+        for articulo in data.dict:
+            articulos.insert(articulo)
 
 
 if __name__ == "__main__":
