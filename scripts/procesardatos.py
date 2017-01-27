@@ -5,9 +5,9 @@ import datetime
 import pymongo
 
 TYPES = {'txt', 'png', 'wmv', 'rtf', 'pps', 'jpg', 'wma', 'mdi', 'doc', 'pptx', 'pdf', 'xls', 'htm', 'docx', 'gif'}
-TEXT_TYPES = ['txt', 'rtf', 'doc', 'pdf', 'htm', 'docx']
-DATA_TYPES = ['xls']
-MEDIA_TYPES = ['png', 'wmv', 'pps', 'jpg', 'gif', 'wma', 'mdi', 'pptx']
+TEXT_TYPES = ['txt', 'rtf', 'doc', 'pdf', 'htm', 'docx', 'pps', 'pptx','xls']
+DATA_TYPES = []
+MEDIA_TYPES = ['png', 'wmv', 'jpg', 'gif', 'wma', 'mdi',]
 
 data = tablib.Dataset(headers=[])
 
