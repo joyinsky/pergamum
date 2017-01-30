@@ -59,6 +59,6 @@ def save_in_mongo(data):
 
 
 if __name__ == "__main__":
-    save_in_mongo(data)
+    # save_in_mongo(data)
     with pymongo.MongoClient('mongodb://localhost:27017/') as db:
         print(db.archivo.articulos.count())
