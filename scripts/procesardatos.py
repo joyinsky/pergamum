@@ -3,9 +3,11 @@ import glob
 import tablib
 import datetime
 import pymongo
+from pymongo.errors import DocumentTooLarge
 import pprint
 from tika import parser
 from copy import copy
+from tqdm import tqdm
 
 TYPES = {'txt', 'png', 'wmv', 'rtf', 'pps', 'jpg', 'wma', 'mdi', 'doc', 'pptx', 'pdf', 'xls', 'htm', 'docx', 'gif'}
 TEXT_TYPES = ['txt', 'rtf', 'doc', 'pdf', 'htm', 'docx', 'pps', 'pptx','xls']
@@ -38,15 +40,22 @@ def save_in_mongo(data):
         archivo = db.archivo
         archivo.drop_collection('articulos')
         articulos = archivo.articulos
-        for articulo in data.dict:
+        for articulo in tqdm(data.dict):
             n = copy(articulo)
             if articulo['ext'] in TEXT_TYPES:
-                parsed = parser.from_file(n['path'])
-                pprint.pprint(articulo)
-                pprint.pprint(parsed)
-                n['content'] = parsed['content']
-                n['metadata'] = parsed['metadata']
-            articulos.insert(n, check_keys=False)
+                try:
+                    parsed = parser.from_file(n['path'])
+                    n['content'] = parsed.get('content')
+                    n['metadata'] = parsed.get('metadata')
+                except Exception as e:
+                    n['exception'] = True
+                    pprint.pprint(n)
+                    pprint.pprint(e)
+            try:
+                articulos.insert(n, check_keys=False)
+            except DocumentTooLarge:
+                n['content'] = None
+                articulos.insert(n, check_keys=False)
 
 
 if __name__ == "__main__":
