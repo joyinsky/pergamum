@@ -1,4 +1,5 @@
 pip-tools
+ansible
 ipython
 ipdb
 flake8
@@ -27,4 +28,5 @@ tablib
 pymongo
 tika
 tqdm
+ansible
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric

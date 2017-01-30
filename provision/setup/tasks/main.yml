@@ -1,0 +1,48 @@
+- name: Install packages
+  become: true
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+      # Database
+      - postgresql
+      - libpq-dev # Required for Ansible to interact with postgres
+      - python-psycopg2
+      - python3-psycopg2 # Required for Ansible to interact with postgres
+
+      # Python Dev
+      - python3-dev
+      - python3-setuptools
+      - python3-virtualenv
+
+- name: Restart Postgres
+  become: true
+  service: name=postgresql state=restarted
+
+- name: Allow password authentication for local socket users
+  become: true
+  copy: src=pg_hba.conf dest=/etc/postgresql/9.5/main/pg_hba.conf force=yes
+  notify:
+      - Restart Postgres
+
+- name: Create Database
+  become: true
+  become_user: postgres
+  postgresql_db: name={{ db_name }}
+  vars:
+    ansible_ssh_pipelining: true
+
+
+- name: Create User
+  become: true
+  become_user: postgres
+  postgresql_user: name={{ db_user }} password={{ db_password }} state=present role_attr_flags=NOSUPERUSER,CREATEDB
+  vars:
+    ansible_ssh_pipelining: true
+
+
+- name: Provide user with DB permissions
+  become: true
+  become_user: postgres
+  postgresql_user: user={{ db_user }} db={{ db_name }} priv=ALL
+  vars:
+    ansible_ssh_pipelining: true
+
