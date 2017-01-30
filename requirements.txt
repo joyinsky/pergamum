@@ -25,4 +25,5 @@ uwsgi
 django-configurations
 tablib
 pymongo
+tika
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric

@@ -3,10 +3,12 @@ import glob
 import tablib
 import datetime
 import pymongo
+import pprint
+from tika import parser
+from copy import copy
 
 TYPES = {'txt', 'png', 'wmv', 'rtf', 'pps', 'jpg', 'wma', 'mdi', 'doc', 'pptx', 'pdf', 'xls', 'htm', 'docx', 'gif'}
 TEXT_TYPES = ['txt', 'rtf', 'doc', 'pdf', 'htm', 'docx', 'pps', 'pptx','xls']
-DATA_TYPES = []
 MEDIA_TYPES = ['png', 'wmv', 'jpg', 'gif', 'wma', 'mdi',]
 
 data = tablib.Dataset(headers=[])
@@ -37,7 +39,14 @@ def save_in_mongo(data):
         archivo.drop_collection('articulos')
         articulos = archivo.articulos
         for articulo in data.dict:
-            articulos.insert(articulo)
+            n = copy(articulo)
+            if articulo['ext'] in TEXT_TYPES:
+                parsed = parser.from_file(n['path'])
+                pprint.pprint(articulo)
+                pprint.pprint(parsed)
+                n['content'] = parsed['content']
+                n['metadata'] = parsed['metadata']
+            articulos.insert(n, check_keys=False)
 
 
 if __name__ == "__main__":
