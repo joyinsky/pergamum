@@ -28,6 +28,7 @@ bower_components/
 static_root/
 db.sqlite3
 node_modules/
-articledb/
+articledb
 *.csv
 ignored/
+.vagrant/

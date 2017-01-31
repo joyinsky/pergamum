@@ -44,6 +44,36 @@ class Theme(MPTTModel):
         verbose_name_plural = _('Themes')
 
 
+class Folder(MPTTModel):
+    name = models.CharField(_('name'), max_length=50, unique=True)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
+    order = models.PositiveIntegerField(_('order'))
+
+    class MPTTMeta:
+        order_insertion_by = ['order']
+
+    def save(self, *args, **kwargs):
+        super(Folder, self).save(*args, **kwargs)
+        Folder.objects.rebuild()
+
+    def __str__(self):
+        return self.route
+
+    @property
+    def route(self):
+        route = [self.name]
+        parent = self.parent
+        while parent:
+            route.insert(0, parent.name)
+            parent = parent.parent
+
+        return " / ".join(route)
+
+    class Meta:
+        verbose_name = _('Folder')
+        verbose_name_plural = _('Folders')
+
+
 class Source(models.Model):
     name = models.CharField(_('name'), max_length=50, unique=True)
     url = models.URLField(_('url'), blank=True)
@@ -63,6 +93,7 @@ class Article(models.Model):
     date = models.DateField(_('date'))
     content = models.TextField(_('content'))
     themes = models.ManyToManyField(Theme, blank=True, verbose_name=_('themes'), related_name='articles')
+    folder = models.ForeignKey(Folder, blank=True, null=True, verbose_name=_('folder'), related_name='articles')
 
     source = models.ForeignKey(Source, blank=True, null=True)
     url = models.URLField(_('url'), blank=True)
