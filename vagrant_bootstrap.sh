@@ -14,13 +14,15 @@ chown vagrant:vagrant ~vagrant/virtualenvs
 printf "\n\n# Virtualenv settings\n" >> ~vagrant/.bashrc
 printf "export PYTHONPATH=/usr/lib/python3" >> ~vagrant/.bashrc
 printf "export WORKON_HOME=~vagrant/virtualenvs\n" >> ~vagrant/.bashrc
-printf "export PROJECT_HOME=/vagrant\n" >> ~vagrant/.bashrc
+printf "export PROJECT_HOME=/webapp\n" >> ~vagrant/.bashrc
 printf "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3\n" >> ~vagrant/.bashrc
 printf "source /usr/local/bin/virtualenvwrapper.sh\n" >> ~vagrant/.bashrc
 
 # Some useful aliases for getting started, MotD
 echo 'Setting up message of the day, and some aliases...'
-cp /vagrant/examples/motd.txt /etc/motd
+mkvirtuelenv webapp
+workon webapp
+pip install -r /webapp/requirements.txt
 printf "\nUseful Aliases:\n" >> ~vagrant/.bashrc
 printf "alias menu='cat /etc/motd'\n" >> ~vagrant/.bashrc
 printf "alias runserver='python manage.py runserver 0.0.0.0:8000'\n" >> ~vagrant/.bashrc
