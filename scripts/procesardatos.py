@@ -57,6 +57,14 @@ def save_in_mongo(data):
                 n['content'] = None
                 articulos.insert(n, check_keys=False)
 
+def dump_to_csv():
+    with pymongo.MongoClient('mongodb://localhost:27017/') as db:
+        articulos = db.archive.articulos
+        with open("db.json", "w") as fdb:
+            from bson.json_util import dumps
+            fdb.write(dumps(articulos.find({}, {"_id": 1, "metadata.title": 1,"content": 1, "path": 1,
+                                                "ext": 1, "folder": 1, "filename": 1, "created": 1})))
+
 
 if __name__ == "__main__":
     # save_in_mongo(data)
