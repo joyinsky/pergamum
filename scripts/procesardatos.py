@@ -57,6 +57,7 @@ def save_in_mongo(data):
                 n['content'] = None
                 articulos.insert(n, check_keys=False)
 
+
 def dump_to_csv():
     with pymongo.MongoClient('mongodb://localhost:27017/') as db:
         articulos = db.archive.articulos

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Install git for version control, pip for install python packages
 echo 'Installing git, Python 3, and pip...'
 # libfreetype6-dev ziblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
@@ -33,3 +34,5 @@ echo ""
 echo "Vagrant install complete."
 echo "Now try logging in:"
 echo "    $ vagrant ssh"
+
+runserver
