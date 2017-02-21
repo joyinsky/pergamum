@@ -3,36 +3,35 @@
 
 # Install git for version control, pip for install python packages
 echo 'Installing git, Python 3, and pip...'
-# libfreetype6-dev ziblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+sudo apt-get install -y language-pack-es libfreetype6-dev
+#ziblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 sudo apt-get -qq install git python3 python3-dev libjpeg-dev libtiff5-dev zlib1g-dev > /dev/null 2>&1
 curl -s https://bootstrap.pypa.io/get-pip.py | python3.5 > /dev/null 2>&1
 
 # Install virtualenv / virtualenvwrapper
 echo 'Installing and configuring virtualenv and virtualenvwrapper...'
 pip install --quiet virtualenvwrapper==4.7.0 Pygments==2.1.1
-mkdir ~vagrant/virtualenvs
-chown vagrant:vagrant ~vagrant/virtualenvs
-printf "\n\n# Virtualenv settings\n" >> ~vagrant/.bashrc
-printf "export PYTHONPATH=/usr/lib/python3" >> ~vagrant/.bashrc
-printf "export WORKON_HOME=~vagrant/virtualenvs\n" >> ~vagrant/.bashrc
-printf "export PROJECT_HOME=/webapp\n" >> ~vagrant/.bashrc
-printf "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3\n" >> ~vagrant/.bashrc
-printf "source /usr/local/bin/virtualenvwrapper.sh\n" >> ~vagrant/.bashrc
+mkdir -p ~ubuntu/virtualenvs
+chown ubuntu:ubuntu ~ubuntu/virtualenvs
+printf "\n\n# Virtualenv settings\n" >> ~ubuntu/.bashrc
+printf "export PYTHONPATH=/usr/lib/python3\n" >> ~ubuntu/.bashrc
+printf "export WORKON_HOME=~ubuntu/virtualenvs\n" >> ~ubuntu/.bashrc
+printf "export PROJECT_HOME=/srv/webapp\n" >> ~ubuntu/.bashrc
+printf "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3\n" >> ~ubuntu/.bashrc
+printf "source /usr/local/bin/virtualenvwrapper.sh\n" >> ~ubuntu/.bashrc
 
 # Some useful aliases for getting started, MotD
 echo 'Setting up message of the day, and some aliases...'
-mkvirtuelenv webapp
+mkvirtualenv webapp
 workon webapp
-pip install -r /webapp/requirements.txt
-printf "\nUseful Aliases:\n" >> ~vagrant/.bashrc
-printf "alias menu='cat /etc/motd'\n" >> ~vagrant/.bashrc
-printf "alias runserver='python manage.py runserver 0.0.0.0:8000'\n" >> ~vagrant/.bashrc
-printf "alias ccat='pygmentize -O style=monokai -f terminal -g'\n" >> ~vagrant/.bashrc
+pip install -r /srv/webapp/requirements.txt
+printf "# \nUseful Aliases:\n" >> ~ubuntu/.bashrc
+printf "alias menu='cat /etc/motd'\n" >> ~ubuntu/.bashrc
+printf "alias runserver='python manage.py runserver 0.0.0.0:8000'\n" >> ~ubuntu/.bashrc
+printf "alias ccat='pygmentize -O style=monokai -f terminal -g'\n" >> ~ubuntu/.bashrc
 
 # Complete
 echo ""
 echo "Vagrant install complete."
 echo "Now try logging in:"
 echo "    $ vagrant ssh"
-
-runserver

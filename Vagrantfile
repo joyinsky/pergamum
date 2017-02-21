@@ -17,21 +17,21 @@ Vagrant.configure(2) do |django_config|
     p.customize ["modifyvm", :id, "--memory", 2048]
     p.customize ["modifyvm", :id, "--cpus", 2]
     p.customize ["modifyvm", :id, "--cpuexecutioncap", 50]
+    p.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
   # Configure a synced folder between HOST and GUEST
-  django_config.vm.synced_folder ".", "/webapp", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
+  django_config.vm.synced_folder ".", "/srv/webapp", id: "vagrant-root", :mount_options => ["dmode=777","fmode=777"]
 
   # Config hostname and IP address so entry can be added to HOSTS file
   django_config.vm.hostname = "pergamum"
-  django_config.vm.network "private_network", ip: "192.168.33.10"
+  django_config.vm.network "private_network", ip: "10.0.13.17"
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
   django_config.vm.network "forwarded_port", guest: 80, host: 8080
-  # django_config.vm.network "forwarded_port", guest: 8000, host: 8000
+  django_config.vm.network "forwarded_port", guest: 8000, host: 8000
 
   # kickoff a shell script to install Python essentials
   django_config.vm.provision :shell, path: "vagrant_bootstrap.sh"
-
 end
