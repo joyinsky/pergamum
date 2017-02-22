@@ -27,4 +27,5 @@ tablib
 pymongo
 tika
 tqdm
+django-attachments
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric
