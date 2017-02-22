@@ -8,10 +8,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='home.html')),
     url(r'^attachments/', include('attachments.urls', namespace='attachments')),
     url(r'^bibloi/', include('pergamum.bibloi.urls', namespace='bibloi')),
+    url(r'^search/', include('haystack.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', TemplateView.as_view(template_name='home.html')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
