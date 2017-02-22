@@ -20,6 +20,7 @@ printf "export PROJECT_HOME=/srv/webapp\n" >> ~ubuntu/.bashrc
 printf "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3\n" >> ~ubuntu/.bashrc
 printf "source /usr/local/bin/virtualenvwrapper.sh\n" >> ~ubuntu/.bashrc
 
+
 # Some useful aliases for getting started, MotD
 echo 'Setting up message of the day, and some aliases...'
 
@@ -27,6 +28,9 @@ printf "# \nUseful Aliases:\n" >> ~ubuntu/.bashrc
 printf "alias menu='cat /etc/motd'\n" >> ~ubuntu/.bashrc
 printf "alias runserver='python manage.py runserver 0.0.0.0:8000'\n" >> ~ubuntu/.bashrc
 printf "alias ccat='pygmentize -O style=monokai -f terminal -g'\n" >> ~ubuntu/.bashrc
+
+echo "Installing Solr"
+sudo apt-get install -y solr-tomcat
 
 # Complete
 echo ""

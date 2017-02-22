@@ -54,6 +54,7 @@ class Common(Configuration):
         'django.contrib.staticfiles',
         'raven.contrib.django.raven_compat',
         'debug_toolbar',
+        'haystack',
         'mptt',
         "taggit",
         'bootstrap3',
@@ -243,6 +244,15 @@ class Dev(Common):
     DEBUG = True
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = '/tmp/app-emails'
+
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+            'URL': 'http://127.0.0.1:8080/solr'
+            # ...or for multicore...
+            # 'URL': 'http://127.0.0.1:8983/solr/mysite',
+        },
+    }
 
 
 class Deployed(RedisCache, Common):
