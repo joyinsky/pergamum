@@ -32,6 +32,10 @@ printf "alias ccat='pygmentize -O style=monokai -f terminal -g'\n" >> ~ubuntu/.b
 echo "Installing Solr"
 sudo apt-get install -y solr-tomcat
 
+echo "Creating Database"
+sudo -u postgres psql -c "CREATE USER ubuntu WITH PASSWORD 'Pa$$w0rd'"
+sudo -u postgres psql -c "CREATE DATABASE pergamum WITH OWNER ubuntu";
+
 # Complete
 echo ""
 echo "Vagrant install complete."

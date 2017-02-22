@@ -245,6 +245,16 @@ class Dev(Common):
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = '/tmp/app-emails'
 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'pergamum',
+            'USER': 'ubuntu',
+            'PASSWORD': 'Pa$$w0rd',
+            'HOST': '',
+        }
+    }
+
     HAYSTACK_CONNECTIONS = {
         'default': {
             'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
