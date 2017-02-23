@@ -3,6 +3,8 @@
 
 # Install git for version control, pip for install python packages
 echo 'Installing git, Python 3, and pip...'
+sudo apt-get update
+sudo apt-get upgrade
 sudo apt-get install -y language-pack-es libfreetype6-dev
 #ziblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
 sudo apt-get -qq install build-essential git python3 python3-dev libjpeg-dev libtiff5-dev zlib1g-dev postgresql-9.5 libpq5 libpq-dev > /dev/null 2>&1
