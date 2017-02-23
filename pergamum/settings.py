@@ -74,8 +74,11 @@ class Common(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'pergamum.middleware.login_required.LoginRequiredMiddleware',
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
+
+    LOGIN_URL = '/admin/login/'
 
     ROOT_URLCONF = 'pergamum.urls'
 
