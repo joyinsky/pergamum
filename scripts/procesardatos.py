@@ -63,8 +63,9 @@ def dump_to_csv():
         articulos = db.archive.articulos
         with open("db.json", "w") as fdb:
             from bson.json_util import dumps
-            fdb.write(dumps(articulos.find({}, {"_id": 1, "metadata.title": 1, "content": 1, "path": 1,
-                                                "ext": 1, "folder": 1, "filename": 1, "created": 1})))
+            fdb.write(dumps(articulos.find({}, {"_id": 1, "metadata.title": 1, "metadata.Creation-Date": 1,
+                                                "content": 1, "path": 1, "ext": 1, "folder": 1, "filename": 1,
+                                                "created": 1})))
 
 
 if __name__ == "__main__":
