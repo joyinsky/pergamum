@@ -29,6 +29,7 @@ static_root/
 db.sqlite3
 node_modules/
 articledb
+media/
 db.*
 *.log
 *.csv

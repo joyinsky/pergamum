@@ -100,6 +100,7 @@ class Article(models.Model):
     source_notes = models.TextField(_('Source Notes'), blank=True)
     source_file = models.FileField(null=True)
 
+    uid = models.CharField(max_length=1024, blank=True, null=True)
     tags = TaggableManager(blank=True)
 
     def __str__(self):
