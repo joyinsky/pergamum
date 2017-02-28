@@ -98,6 +98,7 @@ class Article(models.Model):
     source = models.ForeignKey(Source, blank=True, null=True)
     url = models.URLField(_('url'), blank=True)
     source_notes = models.TextField(_('Source Notes'), blank=True)
+    source_file = models.FileField(null=True)
 
     tags = TaggableManager(blank=True)
 

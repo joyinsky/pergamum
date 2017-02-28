@@ -30,5 +30,7 @@ tqdm
 django-attachments
 django-haystack
 pysolr
+arrow
+python-dateutil
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric
 

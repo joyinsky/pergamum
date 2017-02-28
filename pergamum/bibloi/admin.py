@@ -31,7 +31,7 @@ class ArticleAdmin(VersionAdmin):
                       )
 
     list_display = ['name', 'date', 'source']
-    inlines = (AttachmentInlines,)
+    # inlines = (AttachmentInlines,)
 
 
 @admin.register(Person)
