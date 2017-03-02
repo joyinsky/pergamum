@@ -32,5 +32,6 @@ django-haystack
 pysolr
 arrow
 python-dateutil
+gunicorn
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric
 
