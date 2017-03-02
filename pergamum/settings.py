@@ -261,7 +261,8 @@ class Dev(Common):
     HAYSTACK_CONNECTIONS = {
         'default': {
             'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-            'URL': 'http://localhost:8080/solr'
+            'URL': 'http://localhost:8080/solr',
+            'TIMEOUT': 60 * 5,
             # ...or for multicore...
             # 'URL': 'http://127.0.0.1:8983/solr/mysite',
         },
@@ -318,7 +319,8 @@ class Prod(Deployed):
     HAYSTACK_CONNECTIONS = {
         'default': {
             'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-            'URL': 'http://localhost:8080/solr'
+            'URL': 'http://localhost:8080/solr',
+            'TIMEOUT': 60 * 5,
             # ...or for multicore...
             # 'URL': 'http://127.0.0.1:8983/solr/mysite',
         },
