@@ -98,7 +98,7 @@ class Article(models.Model):
     source = models.ForeignKey(Source, blank=True, null=True)
     url = models.URLField(_('url'), blank=True)
     source_notes = models.TextField(_('Source Notes'), blank=True)
-    source_file = models.FileField(null=True)
+    source_file = models.FileField(null=True, max_length=1024)
 
     uid = models.CharField(max_length=1024, blank=True, null=True)
     tags = TaggableManager(blank=True)
