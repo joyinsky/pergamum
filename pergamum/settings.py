@@ -258,6 +258,7 @@ class Dev(Common):
         }
     }
 
+    HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
     HAYSTACK_CONNECTIONS = {
         'default': {
             'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
@@ -316,6 +317,7 @@ class Prod(Deployed):
         }
     }
 
+    HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
     HAYSTACK_CONNECTIONS = {
         'default': {
             'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
