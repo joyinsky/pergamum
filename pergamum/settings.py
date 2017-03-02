@@ -280,14 +280,14 @@ class Deployed(RedisCache, Common):
     MEDIA_ROOT = join(BASE_DIR, 'media')
     COMPRESS_OUTPUT_DIR = ''
 
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.sendgrid.net'
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''
-    DEFAULT_FROM_EMAIL = ''
-    SERVER_EMAIL = ''
+    #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    #EMAIL_HOST = 'smtp.sendgrid.net'
+    #EMAIL_PORT = 587
+    #EMAIL_USE_TLS = True
+    #EMAIL_HOST_USER = ''
+    #EMAIL_HOST_PASSWORD = ''
+    #DEFAULT_FROM_EMAIL = ''
+    #SERVER_EMAIL = ''#
 
 
 class Stage(Deployed):
@@ -309,10 +309,19 @@ class Prod(Deployed):
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'pergamum',
-            'USER': 'www-data',
+            'USER': 'ubuntu',
             'PASSWORD': 'Pa$$w0rd',
-            'HOST': 'localhost',
+            'HOST': '',
         }
+    }
+
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+            'URL': 'http://127.0.0.1:8080/solr'
+            # ...or for multicore...
+            # 'URL': 'http://127.0.0.1:8983/solr/mysite',
+        },
     }
 
     ALLOWED_HOSTS = ['demo.informind.com']  # add deployment domain here
