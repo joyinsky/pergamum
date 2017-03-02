@@ -6,7 +6,7 @@
     <h2>{{ object.name }}</h2>
     <h4>{{ object.date }}</h4>
     <div class="content">
-        {{ object.content }}
+        {{ object.content|linebreaks }}
     </div>
     <a href="{% url 'bibloi:list' %}">List</a>
 {% endblock %}
