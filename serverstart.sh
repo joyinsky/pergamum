@@ -8,7 +8,7 @@ GROUP=www-data                                     # the group to run as (*)
 NUM_WORKERS=3                                    # how many worker processes should Gunicorn spawn (*)
 DJANGO_SETTINGS_MODULE=pergamum.settings             # which settings file should Django use (*)
 DJANGO_WSGI_MODULE=pergamum.wsgi                     # WSGI module name (*)
-VIRTUALENV=/home/ubuntu/virtualenv/webapp/bin
+VIRTUALENV=/home/ubuntu/virtualenvs/webapp/bin
 echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
