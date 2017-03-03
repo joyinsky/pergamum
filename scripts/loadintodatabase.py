@@ -19,7 +19,10 @@ for count, elem in enumerate(data):
     if elem.get('ext') in TEXT_TYPES:
         with open(elem['path'], 'rb') as file_:
             art = Article()
-            art.name = elem.get('metadata', {}).get('title', '') or elem.get('filename')
+            title = elem.get('metadata', {}).get('title', '') or elem.get('filename', '')
+            if type(title) == list and title:
+                title = title[0]
+            art.name = title.replace('\x00', '')
             date = elem.get('metadata', {}).get('Creation-Date')
             if date:
                 if isinstance(date, list):
@@ -28,7 +31,7 @@ for count, elem in enumerate(data):
             else:
                 art.date = datetime.datetime.fromtimestamp(os.path.getctime(elem['path'])).date()
             if elem.get('content'):
-                art.content = elem.get('content')
+                art.content = elem.get('content', '').strip()
             else:
                 art.content = ''
             if elem.get('folder'):
