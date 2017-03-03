@@ -2,7 +2,7 @@
 
 NAME="pergamum"                              #Name of the application (*)
 DJANGODIR=/home/ubuntu/pergamum/            # Django project directory (*)
-SOCKFILE=/home/ubuntu/pergamum/run/gunicorn.sock        # we will communicate using this unix socket (*)
+SOCKFILE=/home/ubuntu/pergamum/run/pergamum.sock        # we will communicate using this unix socket (*)
 USER=ubuntu                                      # the user to run as (*)
 GROUP=www-data                                     # the group to run as (*)
 NUM_WORKERS=3                                    # how many worker processes should Gunicorn spawn (*)
