@@ -5,8 +5,8 @@ server {
     location = /favicon.ico { access_log off; log_not_found off; }
 
     location /static {
-        alias /home/ubuntu/pergamum/static_root;
-	autoindex off;
+        alias /home/ubuntu/pergamum/static_public;
+	    autoindex off;
     }
 
     location / {
