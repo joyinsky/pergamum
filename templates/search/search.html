@@ -22,7 +22,7 @@
                     <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
                 </p>
             {% empty %}
-                <p>No results found.</p>
+                <p>No se encontraron resultados.</p>
             {% endfor %}
 
             {% if page.has_previous or page.has_next %}
