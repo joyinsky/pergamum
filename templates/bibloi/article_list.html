@@ -7,6 +7,8 @@
     {% for object in object_list %}
     <tr>
         <td>{{ object }}</td>
+        <td width="10%">{{ object.date|date:"Y-m-d" }}</td>
+        <td>{{ object.folder.route }}</td>
         <td><a href="{{ object.get_absolute_url }}">Ver</a></td>
     </tr>
     {% empty %}
