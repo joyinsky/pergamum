@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block heading %}Search{% endblock %}
+{% block heading %}Búsqueda{% endblock %}
 
 {% block content %}
     <form method="get" action=".">
@@ -9,13 +9,13 @@
             <tr>
                 <td>&nbsp;</td>
                 <td>
-                    <input type="submit" value="Search">
+                    <input type="submit" value="Buscar">
                 </td>
             </tr>
         </table>
 
         {% if query %}
-            <h3>Results</h3>
+            <h3>Resultados</h3>
 
             {% for result in page.object_list %}
                 <p>
