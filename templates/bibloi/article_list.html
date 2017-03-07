@@ -1,19 +1,17 @@
 {% extends "base.html" %}
 
-{% block heading %}Listing{% endblock %}
+{% block heading %}Lista{% endblock %}
 
 {% block content %}
     <table class="table">
     {% for object in object_list %}
     <tr>
         <td>{{ object }}</td>
-        <td><a href="{{ object.get_absolute_url }}">Details</a></td>
-        <td><a href="{% url 'bibloi:update' object.pk %}">Update</a></td>
-        <td><a href="{% url 'bibloi:delete' object.pk %}">Delete</a></td>
+        <td><a href="{{ object.get_absolute_url }}">Ver</a></td>
     </tr>
     {% empty %}
     <tr>
-        <td><p>No items.</p></td>
+        <td><p>Sin resultados</p></td>
     </tr>
     {% endfor %}
     </table>
@@ -22,13 +20,13 @@
         <div class="pagination">
             <span class="page-links">
                 {% if page_obj.has_previous %}
-                    <a href="{% url 'bibloi:list' %}?page={{ page_obj.previous_page_number }}">previous</a>
+                    <a href="{% url 'bibloi:list' %}?page={{ page_obj.previous_page_number }}">anterior</a>
                 {% endif %}
                 <span class="page-current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
                 </span>
                 {% if page_obj.has_next %}
-                    <a href="{% url 'bibloi:list' %}?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="{% url 'bibloi:list' %}?page={{ page_obj.next_page_number }}">siguiente</a>
                 {% endif %}
             </span>
         </div>
