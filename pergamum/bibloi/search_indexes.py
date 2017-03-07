@@ -14,7 +14,7 @@ class ArticleIndex(indexes.SearchIndex, indexes.Indexable):
 
     def index_queryset(self, using=None):
         """Used when the entire index for model is updated."""
-        return self.get_model().objects.filter(updated_at__lte=datetime.datetime.now())
+        return self.get_model().objects.all()
 
     # def prepare_author(self, obj):
     #     author = u''

@@ -1,8 +1,9 @@
 from django.urls import reverse_lazy
 from vanilla import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .forms import ArticleForm
+from .forms import ArticleForm, ArticleSearchForm
 from .models import Article
-from haystack.views import SearchView
+from haystack.generic_views import SearchView
+from haystack.query import SearchQuerySet
 
 
 class ArticleList(ListView):
@@ -30,4 +31,8 @@ class ArticleDetail(DetailView):
 #    success_url = reverse_lazy('bibloi:list')
 
 class ArticleSearch(SearchView):
-    pass
+    template_name = 'search/search.html'
+    form_class = ArticleSearchForm
+    queryset = SearchQuerySet().order_by('-date')
+
+
