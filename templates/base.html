@@ -38,14 +38,20 @@
                 <li><a href="/">Inicio</a></li>
                 <li><a href="{% url 'bibloi:list' %}">Lista</a></li>
                 <li><a href="{% url 'bibloi:search' %}">Buscar</a></li>
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
             </ul>
-            <div class="nav navbar-nav navbar-right" style="margin:0.4em">
-                <form class="form-inline" method="get" action="{% url 'bibloi:search' %}">
-                    <div class="input-group">
-                        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Buscar">
-                    </div>
-                </form>
-            </div>
+            <ul class="nav navbar-nav navbar-right" style="margin:0.4em">
+                <li>
+                    <form class="form-inline" method="get" action="{% url 'bibloi:search' %}">
+                        <div class="input-group">
+                            <input class="form-control mr-sm-2" type="text" name="q" placeholder="Buscar">
+                        </div>
+                    </form>
+                </li>
+                {% if not user.is_anonymous %}
+                    <li><a href="{% url 'logout' %}">Salir</a></li>
+                {% endif %}
+            </ul>
 
 
         </div><!--/.nav-collapse -->

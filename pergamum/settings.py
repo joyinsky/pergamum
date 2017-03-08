@@ -78,7 +78,7 @@ class Common(Configuration):
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     ]
 
-    LOGIN_URL = '/admin/login/'
+    LOGIN_URL = '/login'
 
     ROOT_URLCONF = 'pergamum.urls'
 

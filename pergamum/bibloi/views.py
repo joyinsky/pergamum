@@ -34,5 +34,3 @@ class ArticleSearch(SearchView):
     template_name = 'search/search.html'
     form_class = ArticleSearchForm
     queryset = SearchQuerySet().order_by('-date')
-
-
