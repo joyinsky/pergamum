@@ -1,4 +1,7 @@
+#!/usr/bin/env python
 from django.urls import reverse_lazy
+from django.shortcuts import Http404
+from django.utils.translation import ugettext as _
 from vanilla import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .forms import ArticleForm, ArticleSearchForm
 from .models import Article, Folder
@@ -37,16 +40,32 @@ class ArticleSearch(SearchView):
 
 
 class FolderView(ListView):
-    model = Folder
+    model = Article
     template_name = 'bibloi/folder_browse.html'
+    parent = None
 
     def get_queryset(self):
-        return self.model.objects.filter()
+        path = self.kwargs.get('path', '')
+        folders = path.split('/')
+
+        for folder in folders:
+            try:
+                if not self.parent:
+                    if folder:
+                        self.parent = Folder.objects.get(name=folder)
+                else:
+                    self.parent = self.parent.get_children().get(name=folder)
+            except Folder.DoesNotExist:
+                raise Http404(_('Folder does not exist'))
+
+        return self.model.objects.filter(folder=self.parent)
 
     def get_context_data(self, **kwargs):
         context = super(FolderView, self).get_context_data(**kwargs)
         print(self.kwargs)
         context['current_folder'] = '/' + self.kwargs.get('path')
-        context['folders'] = ['Folder A', 'Folder B', 'Folder C']
-        context['files'] = ['File 1', 'File 2', 'File 3']
+        if self.parent:
+            context['folders'] = self.parent.get_children()
+        else:
+            context['folders'] = Folder.objects.filter(parent=self.parent)
         return context
