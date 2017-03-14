@@ -1,13 +1,22 @@
 {% extends "base.html" %}
-
+{% load more_like_this %}
 {% block heading %}{{ object.name }}{% endblock %}
+{% more_like_this object as related_content limit 5 %}
 
 {% block content %}
-    <h2></h2>
-    <h5>{{ object.date }}</h5>
-    <div class="content">
-        {{ object.content|linebreaksbr }}
+    <div class="row">
+        <div class="content col-md-8 col-sm-12">
+            <h5>{{ object.date }}</h5>
+            {{ object.content|linebreaksbr }}
+        </div>
+
+        <div class="col-md-offset-1 col-md-3 col-sm-12">
+            {% for related in related_content %}
+                <p>Contenido similar</p>
+            {% endfor %}
+        </div>
     </div>
-    <a href="{% url 'bibloi:list' %}">List</a>
+
+
 {% endblock %}
 
