@@ -36,9 +36,10 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Inicio</a></li>
-                <li><a href="{% url 'bibloi:list' %}">Lista</a></li>
-                <li><a href="{% url 'bibloi:search' %}">Buscar</a></li>
-                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                <li><a href="{% url 'bibloi:archive' '' %}">Navegar</a></li>
+                <li><a href="{% url 'bibloi:search' %}">Búsqueda</a></li>
+                <li><a href="{% url 'admin:index' %}">Administrador</a></li>
+                <li><a href="{% url 'bibloi:tasks' %}">Pendientes</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" style="margin:0.4em">
                 <li>

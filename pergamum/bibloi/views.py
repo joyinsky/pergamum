@@ -2,7 +2,7 @@
 from django.urls import reverse_lazy
 from django.shortcuts import Http404
 from django.utils.translation import ugettext as _
-from vanilla import ListView, CreateView, DetailView, UpdateView, DeleteView
+from vanilla import ListView, CreateView, DetailView, UpdateView, DeleteView, TemplateView
 from .forms import ArticleForm, ArticleSearchForm
 from .models import Article, Folder
 from haystack.generic_views import SearchView
@@ -62,10 +62,13 @@ class FolderView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(FolderView, self).get_context_data(**kwargs)
-        print(self.kwargs)
         context['current_folder'] = '/' + self.kwargs.get('path')
         if self.parent:
             context['folders'] = self.parent.get_children()
         else:
             context['folders'] = Folder.objects.filter(parent=self.parent)
         return context
+
+
+class TasksView(TemplateView):
+    template_name = 'tasks.html'

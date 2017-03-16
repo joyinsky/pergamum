@@ -50,7 +50,7 @@ class Folder(MPTTModel):
     order = models.PositiveIntegerField(_('order'))
 
     class MPTTMeta:
-        order_insertion_by = ['order']
+        order_insertion_by = ['order', 'name']
 
     def save(self, *args, **kwargs):
         super(Folder, self).save(*args, **kwargs)
@@ -67,7 +67,7 @@ class Folder(MPTTModel):
             route.insert(0, parent.name)
             parent = parent.parent
 
-        return " / ".join(route)
+        return "/".join(route)
 
     class Meta:
         verbose_name = _('Folder')

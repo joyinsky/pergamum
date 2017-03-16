@@ -3,5 +3,28 @@
 {% block heading %}{{ current_folder }}{% endblock %}
 
 {% block content %}
-
+    <div id="files-list">
+        <ul class="files">
+            {% for folder in folders %}
+                <li class="folder">
+                    <a href="{% url 'bibloi:archive' folder.route %}">
+                        <div class="file-object">
+                            <span class="content-icon"><i class="glyphicon glyphicon-folder-open"></i> </span>
+                            <span class="content-text">{{ folder.name }}</span>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+            {% for file in object_list %}
+                <li class="file">
+                    <a href="{% url 'bibloi:detail' file.id %}">
+                        <div class="file-object">
+                            <span class="content-icon"><i class="glyphicon glyphicon-file"></i> </span>
+                            <span class="content-text">{{ file.name }}</span>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
