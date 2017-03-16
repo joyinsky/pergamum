@@ -20,7 +20,7 @@ for count, elem in enumerate(data):
         with open(elem['path'], 'rb') as file_:
             art = Article()
             title = elem.get('metadata', {}).get('title', '').strip() or \
-                    elem.get('filename', '').replace('_', ' ').split('.')[:-1]
+                    "".join(elem.get('filename', '').replace('_', ' ').split('.')[:-1])
             if type(title) == list and title:
                 title = title[0]
             art.name = title.replace('\x00', '')
