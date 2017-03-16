@@ -19,7 +19,7 @@
 
             {% for result in page_obj.object_list %}
                 <p>
-                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a> &middot;
+                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.id }} {{ result.object.name }}</a> &middot;
                     <span>{{ result.object.date|date:"Y-m-d" }}</span>
                 </p>
                 <p>{{ result.highlighted.text|first|safe }}</p>
