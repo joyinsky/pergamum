@@ -25,8 +25,6 @@ class ArticleDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
-        more = [SearchQuerySet().more_like_this(self.get_object()).count()]
-        context['more'] = more
         return context
 
 #class ArticleUpdate(UpdateView):
