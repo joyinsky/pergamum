@@ -33,5 +33,6 @@ pysolr
 arrow
 python-dateutil
 gunicorn
+django-crispy-forms
 -e git+git://github.com/pashinin/fabric@p33#egg=fabric
 

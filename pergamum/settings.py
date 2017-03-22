@@ -57,6 +57,7 @@ class Common(Configuration):
         'haystack',
         'mptt',
         "taggit",
+        'crispy_forms',
         'bootstrap3',
         'reversion',
         'suit_redactor',
@@ -99,6 +100,8 @@ class Common(Configuration):
             },
         },
     ]
+
+    CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
     WSGI_APPLICATION = 'pergamum.wsgi.application'
 

@@ -41,6 +41,11 @@ class ArticleSearch(SearchView):
     template_name = 'search/search.html'
     form_class = ArticleSearchForm
     queryset = SearchQuerySet().order_by('-date')
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticleSearch, self).get_context_data(**kwargs)
+        return context
 
 
 class FolderView(ListView):
