@@ -30,14 +30,21 @@
                 {% for result in page_obj.object_list %}
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><a
-                                    href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a></h3>
+                            <h3 class="panel-title">
+                                <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
+                                <span class="pull-right">{% if result.object.source_file %}
+                                    <a href="{{ result.object.source_file.url }}"><i
+                                            class="glyphicon glyphicon-file"></i></a>{% endif %}</span>
+                            </h3>
                         </div>
                         <div class="panel-body">
                             {{ result.highlighted.text|first|safe }}
                         </div>
                         <div class="panel-footer">
-                            {{ result.object.folder.route }} &middot; <span>{{ result.object.date|date:"Y-m-d" }}</span>
+                            <a href="{% url 'bibloi:archive' result.object.folder.route %}"
+                               title="{{ result.object.folder.route }}">
+                                <i class="glyphicon glyphicon-folder-close"></i> {{ result.object.folder.name }}</a>
+                            &middot; <span>{{ result.object.date|date:"Y-m-d" }}</span>
                         </div>
                     </div>
                 {% empty %}
