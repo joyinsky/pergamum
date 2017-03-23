@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 
-{% block heading %}{{ current_folder }}{% endblock %}
+{% block heading %}{% endblock %}
 
 {% block content %}
     <div id="files-list">
+        <ol class="breadcrumb">
+            <li><a href="{% url 'bibloi:archive' '/' %}">Inicio</a></li>
+            {% for folder in parent_folders %}
+                <li><a href="{% url 'bibloi:archive' folder.route %}">{{ folder.name }}</a></li>
+            {% endfor %}
+            <li class="active">{{ current_folder.name }}</li>
+        </ol>
         <ul class="files">
             {% for folder in folders %}
                 <li class="folder">

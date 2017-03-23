@@ -71,7 +71,9 @@ class FolderView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(FolderView, self).get_context_data(**kwargs)
-        context['current_folder'] = '/' + self.kwargs.get('path')
+
+        context['parent_folders'] = self.parent.parent_folders if self.parent else []
+        context['current_folder'] = self.parent
         if self.parent:
             context['folders'] = self.parent.get_children()
         else:

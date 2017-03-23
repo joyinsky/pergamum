@@ -3,7 +3,7 @@ from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.translation import ugettext_lazy as _
 from taggit.managers import TaggableManager
-
+import copy
 
 class Person(models.Model):
     GROUPS = (
@@ -60,13 +60,20 @@ class Folder(MPTTModel):
         return self.route
 
     @property
-    def route(self):
-        route = [self.name]
+    def parent_folders(self):
+        folders = []
         parent = self.parent
         while parent:
-            route.insert(0, parent.name)
+            folders.insert(0, parent)
             parent = parent.parent
+        return folders
 
+    @property
+    def route(self):
+        route = []
+        for folder in self.parent_folders:
+            route.append(folder.name)
+        route.append(self.name)
         return "/".join(route)
 
     class Meta:
