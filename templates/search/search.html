@@ -61,7 +61,7 @@
                                     </li>
                                 {% endif %}
                                 {% for page in page_obj.paginator.page_range|pagination_range:page_obj.number %}
-                                    <li>
+                                    <li class="{% if page == page_obj.number %}active{% endif %}">
                                         <a href="?q={{ query }}&amp;page={{ page }}">{{ page }}</a>
                                     </li>
                                 {% endfor %}
