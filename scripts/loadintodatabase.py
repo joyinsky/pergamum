@@ -19,8 +19,11 @@ for count, elem in enumerate(data):
     if elem.get('ext') in TEXT_TYPES:
         with open(elem['path'], 'rb') as file_:
             art = Article()
-            title = elem.get('metadata', {}).get('title', '').strip() or \
-                    "".join(elem.get('filename', '').replace('_', ' ').split('.')[:-1])
+            try:
+                title = elem.get('metadata', {}).get('title', '').strip() or \
+                        "".join(elem.get('filename', '').replace('_', ' ').split('.')[:-1])
+            except:
+                title =  "".join(elem.get('filename', '').replace('_', ' ').split('.')[:-1])
             if type(title) == list and title:
                 title = title[0]
             art.name = title.replace('\x00', '')

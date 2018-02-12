@@ -16,6 +16,7 @@ MEDIA_TYPES = ['png', 'wmv', 'jpg', 'gif', 'wma', 'mdi',]
 data = tablib.Dataset(headers=[])
 
 archivos = [file for file in glob.glob("articledb/**/*", recursive=True) if os.path.isfile(file)]
+
 nombre_archivo = ["".join(archivo.split('/')[-1].split('.')[0:-1]) for archivo in archivos]
 extensiones = [archivo.split('.')[-1].lower() for archivo in archivos]
 carpetas = ["/".join(archivo.split('/')[1:-1]) for archivo in archivos]
