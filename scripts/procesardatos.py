@@ -44,7 +44,7 @@ def save_in_mongo(data):
             n = copy(articulo)
             if articulo['ext'] in TEXT_TYPES:
                 try:
-                    parsed = parser.from_file(n['path'].decode('latin-1'))
+                    parsed = parser.from_file(n['path'])
                     n['content'] = parsed.get('content')
                     n['metadata'] = parsed.get('metadata')
                 except Exception as e:
