@@ -15,38 +15,39 @@ datalen = len(data)
 
 
 for count, elem in enumerate(data):
-    print(count, "/", datalen)
-    if elem.get('ext') in TEXT_TYPES:
-        with open(elem['path'], 'rb') as file_:
-            art = Article()
-            try:
-                title = elem.get('metadata', {}).get('title', '').strip() or \
-                        "".join(elem.get('filename', '').replace('_', ' ').split('.')[:-1])
-            except AttributeError:
-                title = "".join(elem.get('filename', '').replace('_', ' ').split('.')[:-1])
-            if type(title) == list and title:
-                title = title[0]
-            art.name = title.replace('\x00', '')
-            date = elem.get('metadata', {}).get('Creation-Date')
-            if date:
-                if isinstance(date, list):
-                    date = max(date)
-                art.date = parse(date).date()
-            else:
-                art.date = datetime.datetime.fromtimestamp(os.path.getctime(elem['path'])).date()
-            if elem.get('content'):
-                art.content = elem.get('content', '').strip()
-            else:
-                art.content = ''
-            if elem.get('folder'):
-                folders = elem.get('folder').split('/')
-                current = None
-                for folder in folders:
-                    f, _ = Folder.objects.get_or_create(name=folder, parent=current, defaults={'order': 1})
-                    current = f
-                art.folder = current
-            art.uid = str(elem.get('_id'))
-            djf = File(file_)
-            path = os.path.join(*elem['path'].split('/')[1:])
-            art.source_file.save(path, djf, save=True)
-            art.save()
+    if count > 4975:
+        print(count, "/", datalen)
+        if elem.get('ext') in TEXT_TYPES:
+            with open(elem['path'], 'rb') as file_:
+                art = Article()
+                try:
+                    title = elem.get('metadata', {}).get('title', '').strip() or \
+                            "".join(elem.get('filename', '').replace('_', ' ').split('.')[:-1])
+                except AttributeError:
+                    title = "".join(elem.get('filename', '').replace('_', ' ').split('.')[:-1])
+                if type(title) == list and title:
+                    title = title[0]
+                art.name = title.replace('\x00', '')
+                date = elem.get('metadata', {}).get('Creation-Date')
+                if date:
+                    if isinstance(date, list):
+                        date = max(date)
+                    art.date = parse(date).date()
+                else:
+                    art.date = datetime.datetime.fromtimestamp(os.path.getctime(elem['path'])).date()
+                if elem.get('content'):
+                    art.content = elem.get('content', '').strip()
+                else:
+                    art.content = ''
+                if elem.get('folder'):
+                    folders = elem.get('folder').split('/')
+                    current = None
+                    for folder in folders:
+                        f, _ = Folder.objects.get_or_create(name=folder, parent=current, defaults={'order': 1})
+                        current = f
+                    art.folder = current
+                art.uid = str(elem.get('_id'))
+                djf = File(file_)
+                path = os.path.join(*elem['path'].split('/')[1:])
+                art.source_file.save(path, djf, save=True)
+                art.save()
